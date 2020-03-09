@@ -1,0 +1,38 @@
+﻿<Window x:Class="StudentInfoSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentInfoSystem"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <GroupBox x:Name="personalInfo" Header="Лични данни" HorizontalAlignment="Left" Height="123" Margin="29,22,0,0" VerticalAlignment="Top" Width="729">
+        </GroupBox>
+        <Label x:Name="lblName" Content="Име:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,53,0,0"/>
+        <Label x:Name="lblMiddlename" Content="Презиме:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,79,0,0"/>
+        <Label x:Name="lblSirname" Content="Фамилия:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,105,0,0"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="135,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
+        <TextBox x:Name="txtMiddlename" HorizontalAlignment="Left" Height="23" Margin="136,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="399"/>
+        <TextBox x:Name="txtSirname" HorizontalAlignment="Left" Height="23" Margin="136,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="399"/>
+        <GroupBox x:Name="studentInfo" Header="Студентска информация" HorizontalAlignment="Left" Height="201" VerticalAlignment="Top" Width="729" Margin="29,178,0,0"/>
+        <Label x:Name="lblFaculty" Content="Факултет:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,212,0,0"/>
+        <Label x:Name="lblSpeciality" Content="Специалност:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,238,0,0"/>
+        <Label x:Name="lblOKS" Content="ОКС:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,264,0,0"/>
+        <Label x:Name="lblStatus" Content="Статус:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,290,0,0"/>
+        <Label x:Name="lblFacNumber" Content="Фак. номер:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,316,0,0"/>
+        <TextBox x:Name="txtFaculty" HorizontalAlignment="Left" Height="23" Margin="136,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
+        <TextBox x:Name="txtSpeciality" HorizontalAlignment="Left" Height="23" Margin="136,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
+        <TextBox x:Name="txtOKS" HorizontalAlignment="Left" Height="23" Margin="136,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
+        <TextBox x:Name="txtStatus" HorizontalAlignment="Left" Height="23" Margin="136,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
+        <TextBox x:Name="txtFacNumber" HorizontalAlignment="Left" Height="23" Margin="136,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
+        <Label x:Name="lblCourse" Content="Курс:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="561,209,0,0"/>
+        <Label x:Name="lblFlow" Content="Поток:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="561,235,0,0"/>
+        <Label x:Name="lblGroup" Content="Група:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="561,261,0,0"/>
+        <TextBox x:Name="txtCourse" HorizontalAlignment="Left" Height="23" Margin="631,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="txtFlow" HorizontalAlignment="Left" Height="23" Margin="631,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="txtGroup" HorizontalAlignment="Left" Height="23" Margin="631,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+
+
+    </Grid>
+</Window>
