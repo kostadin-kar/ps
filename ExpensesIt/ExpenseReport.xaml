@@ -1,0 +1,81 @@
+﻿<Window x:Class="ExpensesIt.ExpenseReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExpensesIt"
+        mc:Ignorable="d"
+        Title="ExpensesIt - View Expenses" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="watermark.png"/>
+        </Grid.Background>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="Expense Report For:" FontSize="24" FontWeight="Bold" Foreground="#FF3673DE" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                
+                <Label Grid.Row="1" Content="Name:" Margin="10,10,10,10" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <Label Grid.Row="1" Content="{Binding XPath=@Name}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" ></Label>
+                
+                <Label Grid.Row="2" Content="Department:" Margin="10,10,10,10" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <Label Grid.Row="2" Content="{Binding XPath=@Department}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" ></Label>
+
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" ItemsSource="{Binding XPath=Expense}" 
+                              AutoGenerateColumns="False" RowHeaderWidth="0" >
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Height" Value="32" />
+                                <Setter Property="Padding" Value="5" />
+                                <Setter Property="Background" Value="#4E87D4" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ExpenseType" Binding="{Binding XPath=@ExpenseType}" />
+                            <DataGridTextColumn Header="Amount" Binding="{Binding XPath=@ExpenseAmount}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
+                    <!--Old style-->
+                    <!--<Border Height="35" Padding="5" Background="#4E87D4" Grid.Column="0" Grid.Row="0">
+                        <Label VerticalAlignment="Center" Foreground="White">Expense Type</Label>
+                    </Border>
+                    <ListBox Name="lstExpenseType" Grid.Column="0" Grid.Row="1">
+
+                    </ListBox>
+
+                    <Border Height="35" Padding="5" Background="#4E87D4" Grid.Column="1" Grid.Row="0">
+                        <Label VerticalAlignment="Center" Foreground="White">Amount</Label>
+                    </Border>
+                    <ListBox Name="lstAmount" Grid.Column="1" Grid.Row="1">
+
+                    </ListBox>-->
+
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

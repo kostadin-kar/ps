@@ -9,10 +9,10 @@ namespace StudentInfoSystem
 {
     class StudentValidation
     {
-        public Student GetStudentDataByUser(User user)
+        public static Student GetStudentDataByUser(User user)
         {
             long facultyNumber;
-            if (long.TryParse(user.facultyNumber, out facultyNumber))
+            if (!long.TryParse(user.facultyNumber, out facultyNumber))
             {
                 //error invalid faculty number
                 return null;
@@ -21,9 +21,10 @@ namespace StudentInfoSystem
             Student student = null;
             foreach (User u in UserData.TestUsers)
             {
-                if (facultyNumber == long.Parse(u.facultyNumber))
+                long tempFacultyNumber = -1;
+                if (long.TryParse(u.facultyNumber, out tempFacultyNumber) && facultyNumber == tempFacultyNumber)
                 {
-                    student = new Student();
+                    student = StudentData.getStudentByFacutlyNumber(facultyNumber);
                     break;
                 }
             }

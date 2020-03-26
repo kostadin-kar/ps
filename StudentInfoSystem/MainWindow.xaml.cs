@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserLogin;
 
 namespace StudentInfoSystem
 {
@@ -23,6 +24,21 @@ namespace StudentInfoSystem
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public void PopulateData(Student student)
+        {
+            txtName.Text = student.name;
+            txtMiddlename.Text = student.middlename;
+            txtSirname.Text = student.sirname;
+            txtFaculty.Text = student.faculty;
+            txtSpeciality.Text = student.speciality;
+            txtOKS.Text = student.oks;
+            txtStatus.Text = student.status;
+            txtFacNumber.Text = student.facultyNumber.ToString();
+            txtCourse.Text = student.course.ToString();
+            txtFlow.Text = student.flow;
+            txtGroup.Text = student.group;
         }
     }
 }

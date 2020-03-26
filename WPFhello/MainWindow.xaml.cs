@@ -49,10 +49,10 @@ namespace WPFhello
 
             if (txtName.Text.Length <= 2)
             {
-                MessageBox.Show("Уй е най-краткото име, поне два символа моля...");
+                MessageBox.Show("Name should be at least 2 symbols long.");
                 return;
             }
-            MessageBox.Show("Дай ми бележкатаа, " + txtName.Text + "!!!");
+            MessageBox.Show("Hello, " + txtName.Text + "!!!");
         }
 
         private void TxtNPower_KeyDown(object sender, KeyEventArgs e)
@@ -70,7 +70,7 @@ namespace WPFhello
             }
             if (txtNPowerY_N.Text.Length != 0 && txtNPowerY_Y.Text.Length != 0)
             {
-                MessageBox.Show("ЕЙ, шопар, въведи правилни данни");
+                MessageBox.Show("Please, enter valid data.");
             }
         }
 
