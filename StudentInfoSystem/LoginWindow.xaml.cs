@@ -42,7 +42,7 @@ namespace StudentInfoSystem
                     txtLoginPassword.Text = "";
                     return;
                 }
-                mainWindow.PopulateData(student);
+                mainWindow.Student = student;
                 mainWindow.Show();
                 //display info
             }

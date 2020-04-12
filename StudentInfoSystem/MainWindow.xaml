@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StudentInfoSystem"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="3,0,-3,0">
+    <Grid Margin="3,0,-3,0" Name="Wrapper">
         <GroupBox x:Name="personalInfo" Header="Лични данни" HorizontalAlignment="Left" Height="123" Margin="29,22,0,0" VerticalAlignment="Top" Width="729">
             <Grid>
                 <Grid.RowDefinitions>

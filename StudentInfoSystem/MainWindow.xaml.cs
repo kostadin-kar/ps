@@ -26,19 +26,83 @@ namespace StudentInfoSystem
             InitializeComponent();
         }
 
-        public void PopulateData(Student student)
+        private Student _student;
+        public Student Student
         {
-            txtName.Text = student.name;
-            txtMiddlename.Text = student.middlename;
-            txtSirname.Text = student.sirname;
-            txtFaculty.Text = student.faculty;
-            txtSpeciality.Text = student.speciality;
-            txtOKS.Text = student.oks;
-            txtStatus.Text = student.status;
-            txtFacNumber.Text = student.facultyNumber.ToString();
-            txtCourse.Text = student.course.ToString();
-            txtFlow.Text = student.flow;
-            txtGroup.Text = student.group;
+            get { return _student; }
+            set
+            {
+                if (value == null)
+                {
+                    DisableControls();
+                }
+                else
+                {
+                    _student = value;
+                    EnableControls();
+                    PopulateData();
+                }
+            }
+        }
+
+        private void PopulateData()
+        {
+            txtName.Text = _student.name;
+            txtMiddlename.Text = _student.middlename;
+            txtSirname.Text = _student.sirname;
+            txtFaculty.Text = _student.faculty;
+            txtSpeciality.Text = _student.speciality;
+            txtOKS.Text = _student.oks;
+            txtStatus.Text = _student.status;
+            txtFacNumber.Text = _student.facultyNumber.ToString();
+            txtCourse.Text = _student.course.ToString();
+            txtFlow.Text = _student.flow;
+            txtGroup.Text = _student.group;
+        }
+
+        public void ClearControls()
+        {
+            ApplyAction(control => control.Text = "");
+        }
+
+        public void DisableControls()
+        {
+            ApplyAction(control => control.IsEnabled = false);
+        }
+
+        public void EnableControls()
+        {
+            ApplyAction(control => control.IsEnabled = true);
+        }
+
+        private void ApplyAction(Action<TextBox> action)
+        {
+            List<TextBox> textBoxes = new List<TextBox>();
+            GetTextBoxes(Wrapper, ref textBoxes);
+
+            foreach (TextBox textBox in textBoxes)
+            {
+                action.Invoke(textBox);
+            }
+        }
+
+        private void GetTextBoxes(Grid grid, ref List<TextBox> textBoxes)
+        {
+            foreach (UIElement element in grid.Children)
+            {
+                if (element.GetType() == typeof(TextBox))
+                {
+                    textBoxes.Add((TextBox)element);
+                }
+                else if (element.GetType() == typeof(Grid))
+                {
+                    GetTextBoxes((Grid)element, ref textBoxes);
+                }
+                else if (element.GetType() == typeof(GroupBox))
+                {
+                    GetTextBoxes((Grid)((GroupBox)element).Content, ref textBoxes);
+                }
+            }
         }
     }
 }
