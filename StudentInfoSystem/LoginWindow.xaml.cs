@@ -33,7 +33,7 @@ namespace StudentInfoSystem
             User user = null;
             if (LoginValidation.ValidateUserInput(ref user))
             {
-                MainWindow mainWindow = new MainWindow();
+                ////MainWindow mainWindow = new MainWindow();
                 student = StudentValidation.GetStudentDataByUser(user);
 
                 if (student == null)
@@ -42,8 +42,9 @@ namespace StudentInfoSystem
                     txtLoginPassword.Text = "";
                     return;
                 }
-                mainWindow.Student = student;
-                mainWindow.Show();
+                //mainWindow.Student = student;
+                MainFormVM modelView = new MainFormVM(student);
+                ////mainWindow.Show();
                 //display info
             }
             else
