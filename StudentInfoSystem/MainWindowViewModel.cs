@@ -27,10 +27,8 @@ namespace StudentInfoSystem
 
         private void NavToStudentInfo(Student student)
         {
-            //mainFormViewModel = new MainFormViewModel(student);
             mainFormViewModel.Student = student;
             CurrentViewModel = mainFormViewModel;
-            //OnPropertyChanged("CurrentViewModel");
         }
     }
 }

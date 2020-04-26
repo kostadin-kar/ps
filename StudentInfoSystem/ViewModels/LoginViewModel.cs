@@ -13,7 +13,6 @@ namespace StudentInfoSystem.ViewModels
     {
         private RelayCommand logIn;
         public static event Action<Student> SuccessfulLogin = delegate { };
-        //public event EventHandler<Student> SuccessfulLogin;
 
         private static readonly LoginViewModel _instance = new LoginViewModel();
         public LoginViewModel()
@@ -42,18 +41,11 @@ namespace StudentInfoSystem.ViewModels
 
         private void AttemptLogIn()
         {
-            //if (SuccessfulLogin != null)
-            //{
-            //    Student s = new Student(null, null, null, null, null, null, null, null, 0, 0, null, null);
-            //    SuccessfulLogin(s);
-            //}
-
             LoginValidation login = new LoginValidation(Username, Password, this.ActionOnError);
 
             User user = null;
             if (LoginValidation.ValidateUserInput(ref user))
             {
-                ////MainWindow mainWindow = new MainWindow();
                 Student student = StudentValidation.GetStudentDataByUser(user);
 
                 if (student == null)
@@ -63,15 +55,10 @@ namespace StudentInfoSystem.ViewModels
                     OnPropertyChanged("Password");
                     return;
                 }
-                //mainWindow.Student = student;
-                ///MainFormVM modelView = new MainFormVM(student);
-                ////mainWindow.Show();
-                //display info
                 OnSuccessfulLogin(student);
             }
             else
             {
-                //MessageBox.Show("Invalid username or password");
                 Password = "";
                 OnPropertyChanged("Password");
             }

@@ -14,7 +14,6 @@ namespace StudentInfoSystem
         private string faculty;
         private string speciality;
         private string degree;
-        private string oks;
         private string status;
         private long facultyNumber;
         private short course;
@@ -51,11 +50,6 @@ namespace StudentInfoSystem
             get => degree;
             set => degree = value;
         }
-        public string Oks
-        {
-            get => oks;
-            set => oks = value;
-        }
         public string Status
         {
             get => status;
@@ -82,7 +76,10 @@ namespace StudentInfoSystem
             set => group = value;
         }
 
-        public Student(string name, string middlename, string sirname, string faculty, string speciality, string degree, string oks, string status, long facultyNumber, short course, string flow, string group)
+        public Student(string name, 
+            string middlename, string sirname, string faculty, 
+            string speciality, string degree, string status, 
+            long facultyNumber, short course, string flow, string group)
         {
             this.Name = name;
             this.Middlename = middlename;
@@ -90,7 +87,6 @@ namespace StudentInfoSystem
             this.Faculty = faculty;
             this.Speciality = speciality;
             this.Degree = degree;
-            this.Oks = oks;
             this.Status = status;
             this.FacultyNumber = facultyNumber;
             this.Course = course;
