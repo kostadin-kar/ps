@@ -8,14 +8,20 @@ namespace StudentInfoSystem.ViewModels
 {
     public class MainFormViewModel : BindableBase
     {
-        public MainFormViewModel(Student student)
+        //public MainFormViewModel(Student student)
+        //{
+        //    Student = student;
+        //}
+
+        public MainFormViewModel()
         {
-            Student = student;
         }
 
+        private static Student student;
         public Student Student
         {
-            get; set;
+            get { return student; }
+            set { SetProperty(ref student, value); }
         }
     }
 }

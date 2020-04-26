@@ -30,7 +30,7 @@ namespace StudentInfoSystem
 
         public static Student getStudentByFacutlyNumber(long facNumber)
         {
-            return _testStudent.Find(student => student.facultyNumber == facNumber);
+            return _testStudent.Find(student => student.FacultyNumber == facNumber);
         }
     }
 }

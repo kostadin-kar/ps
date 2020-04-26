@@ -19,13 +19,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0" Grid.Row="0" x:Name="lblName" Content="Име:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,1,0,0" RenderTransformOrigin="-0.028,-1.269"/>
-                <TextBox Text="{Binding Source={StaticResource local}, Path=Student}" Grid.Column="0" x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="125,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
+                <TextBox Text="{Binding Student.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Column="0" x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="125,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
 
                 <Label Grid.Column="0" Grid.Row="1" x:Name="lblMiddlename" Content="Презиме:" HorizontalAlignment="Left" Margin="25,2,0,6" RenderTransformOrigin="1.419,-1.346"/>
-                <TextBox Grid.Column="0" x:Name="txtMiddlename" HorizontalAlignment="Left" Height="23" Margin="126,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Grid.Row="1"/>
+                <TextBox Text="{Binding Student.Middlename, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Column="0" x:Name="txtMiddlename" HorizontalAlignment="Left" Height="23" Margin="126,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Grid.Row="1"/>
 
                 <Label Grid.Column="0" Grid.Row="2" x:Name="lblSirname" Content="Фамилия:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,0,0,0"/>
-                <TextBox Grid.Column="0" x:Name="txtSirname" HorizontalAlignment="Left" Height="23" Margin="126,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Grid.Row="2"/>
+                <TextBox Text="{Binding Student.Sirname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Column="0" x:Name="txtSirname" HorizontalAlignment="Left" Height="23" Margin="126,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Grid.Row="2"/>
             </Grid>
         </GroupBox>
         <GroupBox x:Name="studentInfo" Header="Студентска информация" HorizontalAlignment="Left" Height="201" VerticalAlignment="Top" Width="729" Margin="29,178,0,0">
@@ -45,28 +45,28 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Row="0" Grid.Column="0" x:Name="lblFaculty" Content="Факултет:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,0,0,0"/>
-                <TextBox Grid.Column="1" x:Name="txtFaculty" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2"/>
+                <TextBox Text="{Binding Student.Faculty, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Column="1" x:Name="txtFaculty" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2"/>
 
                 <Label x:Name="lblSpeciality" Content="Специалност:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,0,0,0" Grid.Row="1"/>
-                <TextBox x:Name="txtSpeciality" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1"/>
+                <TextBox Text="{Binding Student.Speciality, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtSpeciality" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1"/>
 
                 <Label x:Name="lblOKS" Content="ОКС:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,0,0,0" Grid.Row="2"/>
-                <TextBox x:Name="txtOKS" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2"/>
+                <TextBox Text="{Binding Student.Oks, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtOKS" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2"/>
 
                 <Label x:Name="lblStatus" Content="Статус:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,2,0,0" Grid.Row="3"/>
-                <TextBox x:Name="txtStatus" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3"/>
+                <TextBox Text="{Binding Student.Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtStatus" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3"/>
 
                 <Label x:Name="lblFacNumber" Content="Фак. номер:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,0,0,0" Grid.Row="4"/>
-                <TextBox x:Name="txtFacNumber" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4"/>
+                <TextBox Text="{Binding Student.FacultyNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtFacNumber" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4"/>
 
                 <Label x:Name="lblCourse" Content="Курс:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="63,0,0,0" Grid.Column="2" Height="26" Width="41"/>
-                <TextBox x:Name="txtCourse" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Grid.Column="3"/>
+                <TextBox Text="{Binding Student.Course, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtCourse" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Grid.Column="3"/>
 
                 <Label x:Name="lblFlow" Content="Поток:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="63,0,0,0" Grid.Column="2" Height="26" Grid.Row="1" Width="47"/>
-                <TextBox x:Name="txtFlow" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Grid.Column="3" Grid.Row="1"/>
+                <TextBox Text="{Binding Student.Flow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtFlow" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Grid.Column="3" Grid.Row="1"/>
 
                 <Label x:Name="lblGroup" Content="Група:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="63,0,0,0" Grid.Column="2" Height="26" Grid.Row="2" Width="47"/>
-                <TextBox x:Name="txtGroup" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Grid.Column="3" Grid.Row="2"/>
+                <TextBox Text="{Binding Student.Group, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtGroup" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Grid.Column="3" Grid.Row="2"/>
             </Grid>
         </GroupBox>
 

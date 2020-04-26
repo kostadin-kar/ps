@@ -12,12 +12,17 @@ namespace StudentInfoSystem.ViewModels
     public class LoginViewModel : BindableBase
     {
         private RelayCommand logIn;
-        public event Action<Student> SuccessfulLogin;
+        public static event Action<Student> SuccessfulLogin = delegate { };
         //public event EventHandler<Student> SuccessfulLogin;
 
+        private static readonly LoginViewModel _instance = new LoginViewModel();
         public LoginViewModel()
         {
             logIn = new RelayCommand(AttemptLogIn);
+        }
+        public static LoginViewModel GetInstance()
+        {
+            return _instance;
         }
 
         public string Username
@@ -35,13 +40,13 @@ namespace StudentInfoSystem.ViewModels
             get { return logIn; }
         }
 
-        protected virtual void AttemptLogIn()
+        private void AttemptLogIn()
         {
-            if (SuccessfulLogin != null)
-            {
-                Student s = new Student(null, null, null, null, null, null, null, null, 0, 0, null, null);
-                SuccessfulLogin(s);
-            }
+            //if (SuccessfulLogin != null)
+            //{
+            //    Student s = new Student(null, null, null, null, null, null, null, null, 0, 0, null, null);
+            //    SuccessfulLogin(s);
+            //}
 
             LoginValidation login = new LoginValidation(Username, Password, this.ActionOnError);
 
@@ -62,7 +67,7 @@ namespace StudentInfoSystem.ViewModels
                 ///MainFormVM modelView = new MainFormVM(student);
                 ////mainWindow.Show();
                 //display info
-                SuccessfulLogin(student);
+                OnSuccessfulLogin(student);
             }
             else
             {
@@ -70,6 +75,11 @@ namespace StudentInfoSystem.ViewModels
                 Password = "";
                 OnPropertyChanged("Password");
             }
+        }
+
+        private static void OnSuccessfulLogin(Student student)
+        {
+            SuccessfulLogin(student);
         }
 
         private void ActionOnError(string msg)

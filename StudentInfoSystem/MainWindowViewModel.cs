@@ -10,11 +10,11 @@ namespace StudentInfoSystem
     class MainWindowViewModel : BindableBase
     {
         private LoginViewModel loginViewModel = new LoginViewModel();
-        private MainFormViewModel mainFormViewModel;
+        private MainFormViewModel mainFormViewModel = new MainFormViewModel();
 
         public MainWindowViewModel()
         {
-            loginViewModel.SuccessfulLogin += NavToStudentInfo;
+            LoginViewModel.SuccessfulLogin += NavToStudentInfo;
             CurrentViewModel = loginViewModel;
         }
 
@@ -27,7 +27,8 @@ namespace StudentInfoSystem
 
         private void NavToStudentInfo(Student student)
         {
-            mainFormViewModel = new MainFormViewModel(student);
+            //mainFormViewModel = new MainFormViewModel(student);
+            mainFormViewModel.Student = student;
             CurrentViewModel = mainFormViewModel;
             //OnPropertyChanged("CurrentViewModel");
         }
