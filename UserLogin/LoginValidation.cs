@@ -34,6 +34,7 @@ namespace UserLogin
             if (!IsInputValid())
             {
                 Console.WriteLine(_errorMessage);
+                Logger.LogActivity(_errorMessage);
                 return false;
             }
 
@@ -42,9 +43,10 @@ namespace UserLogin
             {
                 _actionOnErrorFuction(string.Format("User with username '{0}' and password '{1}' does not exist",
                     currentUserUsername, currentUserPassword));
-                //_errorMessage = string.Format("User with username '{0}' and password '{1}' does not exist", 
-                //    _username, _password);
+                _errorMessage = string.Format("User with username '{0}' and password '{1}' does not exist",
+                    currentUserUsername, currentUserPassword);
                 Console.WriteLine(_errorMessage);
+                Logger.LogActivity(_errorMessage);
                 return false;
             }
             currentUserRole = user.Role;
@@ -65,13 +67,13 @@ namespace UserLogin
             if (String.IsNullOrEmpty(field))
             {
                 _actionOnErrorFuction(string.Format("{0} '{1}' is malformed or missing", errorFieldPlaceholder, field));
-                //_errorMessage = string.Format("{0} is malformed or missing", errorFieldPlaceholder);
+                _errorMessage = string.Format("{0} is malformed or missing", errorFieldPlaceholder);
                 return false;
             }
             if (field.Length < 5)
             {
                 _actionOnErrorFuction(string.Format("{0} '{1}' length less than 5 symbols", errorFieldPlaceholder, field));
-                //_errorMessage = string.Format("{0} length less than 5 symbols", errorFieldPlaceholder);
+                _errorMessage = string.Format("{0} length less than 5 symbols", errorFieldPlaceholder);
                 return false;
             }
             return true;

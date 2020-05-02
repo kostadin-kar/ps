@@ -10,6 +10,11 @@ namespace UserLogin
     {
         static void Main(string[] args)
         {
+            if (UserData.TestUsersIfEmpty())
+            {
+                UserData.CopyTestUsers();
+            }
+
             LoginValidation login = BuildValidator();
 
             while (Logger.CanUserLogIn(LoginValidation.currentUserUsername))
@@ -18,11 +23,6 @@ namespace UserLogin
 
                 if (LoginValidation.ValidateUserInput(ref user))
                 {
-                    if (UserData.TestUsersIfEmpty())
-                    {
-                        UserData.CopyTestUsers();
-                    }
-
                     Console.WriteLine(user.ToString());
                     PrintCurrentUserRole();
 
