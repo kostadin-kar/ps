@@ -26,44 +26,44 @@ namespace StudentInfoSystem.Views
         public MainFormView()
         {
             InitializeComponent();
-            FillStudStatusChoices();
-            this.DataContext = this; //this data context overrides the one from the view model, change it there when necessary
+            //FillStudStatusChoices();
+            //this.DataContext = this; //this data context overrides the one from the view model, change it there when necessary
         }
 
-        public List<string> StudStatusChoices
-        {
-            get; set;
-        }
+        //public List<string> StudStatusChoices
+        //{
+        //    get; set;
+        //}
 
-        private void FillStudStatusChoices()
-        {
-            StudStatusChoices = new List<string>();
+        //private void FillStudStatusChoices()
+        //{
+        //    StudStatusChoices = new List<string>();
 
-            using (IDbConnection connection = new SqlConnection(Properties.Settings.Default.DbContext))
-            {
-                string sqlquery = @"SELECT StatusDescr FROM StudStatus";
+        //    using (IDbConnection connection = new SqlConnection(Properties.Settings.Default.DbContext))
+        //    {
+        //        string sqlquery = @"SELECT StatusDescr FROM StudStatus";
 
-                IDbCommand command = new SqlCommand();
-                command.Connection = connection;
-                connection.Open();
+        //        IDbCommand command = new SqlCommand();
+        //        command.Connection = connection;
+        //        connection.Open();
 
-                command.CommandText = sqlquery;
-                IDataReader reader = command.ExecuteReader();
+        //        command.CommandText = sqlquery;
+        //        IDataReader reader = command.ExecuteReader();
 
-                bool notEndOfResult;
+        //        bool notEndOfResult;
 
-                notEndOfResult = reader.Read();
+        //        notEndOfResult = reader.Read();
 
-                while (notEndOfResult)
-                {
-                    string s = reader.GetString(0);
+        //        while (notEndOfResult)
+        //        {
+        //            string s = reader.GetString(0);
 
-                    StudStatusChoices.Add(s);
+        //            StudStatusChoices.Add(s);
 
-                    notEndOfResult = reader.Read();
-                }
-            }
-        }
+        //            notEndOfResult = reader.Read();
+        //        }
+        //    }
+        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

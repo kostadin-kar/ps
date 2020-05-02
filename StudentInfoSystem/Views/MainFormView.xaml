@@ -69,7 +69,7 @@
                 <TextBox Text="{Binding Student.Group, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtGroup" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Grid.Column="3" Grid.Row="2"/>
             </Grid>
         </GroupBox>
-        <Button Content="Test if studetns are empty" HorizontalAlignment="Left" Margin="29,411,0,0" VerticalAlignment="Top" Width="149" Click="Button_Click"/>
+        <Button Content="Test if studetns are empty" HorizontalAlignment="Left" Margin="29,384,0,0" VerticalAlignment="Top" Width="149" Click="Button_Click"/>
 
     </Grid>
 </UserControl>

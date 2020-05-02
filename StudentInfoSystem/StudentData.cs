@@ -32,14 +32,6 @@ namespace StudentInfoSystem
         {
             StudentInfoContext context = new StudentInfoContext();
             return context.Students.Where(s => s.FacultyNumber == facNumber).First();
-
-            //Student student = 
-            //    (from st in context.Students
-            //        where st.FacultyNumber == facNumber
-            //        select st).First();
-            //return student;
-
-            //return _testStudents.Find(student => student.FacultyNumber == facNumber);
         }
 
         public static bool TestStudentsIfEmpty()

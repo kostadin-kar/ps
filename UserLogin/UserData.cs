@@ -8,13 +8,6 @@ namespace UserLogin
 {
     public static class UserData
     {
-        //private static DateTime dt = new DateTime(2017, 9, 15, 10, 30, 0);
-        //private static int hour = dt.Hour;
-        //private static int nowtime = DateTime.Today.Hour;
-        //private static int timeAfter12Hours = DateTime.Today.AddHours(12).Day;
-        ////private static DateTime t = Convert.ToDateTime();
-        //private static DateTime stringToDate = DateTime.ParseExact(Console.ReadLine(), "yyyy/MM/dd", null);
-
         static UserData()
         {
             ResetTestUserData();
@@ -55,16 +48,6 @@ namespace UserLogin
             return context.Users
                 .Where(u => u.Username == username && u.Password == password)
                 .FirstOrDefault();
-
-            //foreach (User user in _testUsers)
-            //{
-            //    if (user.Username == username && user.Password == password)
-            //    {
-            //        return user;
-            //    }
-            //}
-
-            //return null;
         }
 
         public static void SetUserActiveTo(string username, DateTime activeTo)
@@ -83,19 +66,6 @@ namespace UserLogin
             }
 
             Console.WriteLine(string.Format("User '{0}' does not exist. No changes were made", username));
-
-            //foreach (User user in _testUsers)
-            //{
-            //    if (user.Username == username)
-            //    {
-            //        user.IsActiveUntil = activeTo;
-            //        Console.WriteLine(string.Format("User '{0}'s' active period changed to '{1}' successfully.",
-            //            username, activeTo.ToString(Logger.DATETIME_FORMAT)));
-            //        Logger.LogActivity(string.Format("Active time changed successfully for user '{0}'.", username));
-
-            //        return;
-            //    }
-            //}
         }
 
         public static void AssignUserRole(string username, UserRoles role)
@@ -115,21 +85,6 @@ namespace UserLogin
             }
 
             Console.WriteLine(string.Format("User '{0}' does not exist. No changes were made", username));
-
-            //foreach (User user in _testUsers)
-            //{
-            //    if (user.Username == username)
-            //    {
-            //        user.Role = role;
-            //        Console.WriteLine(string.Format("User '{0}'s' role changed to '{1}' successfully.", 
-            //            username, role.ToString()));
-            //        Logger.LogActivity(string.Format("Role changed successfully for user '{0}'.", username));
-
-            //        return;
-            //    }
-            //}
-
-            //Console.WriteLine(string.Format("User '{0}' does not exist. No changes were made", username));
         }
 
         public static void ListAllUsers()
@@ -140,10 +95,6 @@ namespace UserLogin
             UserContext context = new UserContext();
             context.Users.Select(u => builder.Append(u.ToString() + "*******************\n") );
 
-            //foreach (User user in _testUsers)
-            //{
-            //    builder.Append(user.ToString() + "*******************\n");
-            //}
             Console.WriteLine(builder.ToString());
         }
 

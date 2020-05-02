@@ -41,14 +41,6 @@ namespace UserLogin
                 {
                     Logger.IncrementLoginAttemts(LoginValidation.currentUserUsername);
                     login = BuildValidator();
-
-                    //string logs = Logger.ViewLogs();
-
-                    //string msg = (string.Format("Error login attempt; Username: '{0}', Date: '{1}', Attempt: '{2}'\n",
-                    //    LoginValidation.currentUserUsername, DateTime.Now, attempts));
-
-                    //Logger.LogActivity(msg);
-                    //Console.WriteLine(msg);
                 }
             }
 

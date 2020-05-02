@@ -10,7 +10,6 @@ namespace UserLogin
 {
     public class Logger
     {
-        private const string LOGGER_FILE = "test.txt";
         public const string DATETIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
 
         private static List<string> currentSessionActivities = new List<string>();
@@ -32,15 +31,6 @@ namespace UserLogin
             context.Logs.Add(new Log(context.GetNextLogId(), activityLine));
             context.SaveChanges();
 
-            //if (File.Exists(LOGGER_FILE))
-            //{
-            //    File.AppendAllText(LOGGER_FILE, activityLine, Encoding.UTF8);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Error while working with log file.");
-            //}
-
             currentSessionActivities.Add(activityLine);
         }
 
@@ -48,11 +38,6 @@ namespace UserLogin
         {
             LogContext context = new LogContext();
             return string.Join(Environment.NewLine, context.Logs.ToList());
-
-            //using (StreamReader reader = new StreamReader(LOGGER_FILE))
-            //{
-            //    return reader.ReadToEnd();
-            //}
         }
 
         public static void ViewCurrentSessionActivities()
@@ -67,7 +52,6 @@ namespace UserLogin
 
         private static int GetLoginAttempts(string username)
         {
-            //IEnumerable<string> logLines = File.ReadAllLines(LOGGER_FILE).Reverse();
             LogContext context = new LogContext();
             
             foreach (Log line in context.Logs.ToList())
@@ -89,7 +73,6 @@ namespace UserLogin
 
         private static string GetLastLoginAttemptLog(string username)
         {
-            //IEnumerable<string> logLines = File.ReadAllLines(LOGGER_FILE).Reverse();
             LogContext context = new LogContext();
 
             foreach (Log line in context.Logs.ToList())
@@ -153,8 +136,6 @@ namespace UserLogin
                     string dateMatch = match.Groups[2].Value;
                     return AssertTimeHasPassedSinceSeveralAttempts(username, dateMatch);
                 }
-
-                //return false;
             }
 
             //IncrementLoginAttemts(username);
@@ -163,14 +144,6 @@ namespace UserLogin
 
         public static bool ShouldUserLog(string username)
         {
-            ////StringBuilder builder = new StringBuilder();
-
-            ////using (StreamReader reader = new StreamReader(LOGGER_FILE))
-            ////{
-            ////    "Error login attempt; Username: '{0}', Date: '{1}', Attempt: '{2}'"
-            ////}
-
-            //IEnumerable<string> logLines = File.ReadAllLines(LOGGER_FILE).Reverse();
             LogContext context = new LogContext();
 
             foreach (Log line in context.Logs.ToList())
