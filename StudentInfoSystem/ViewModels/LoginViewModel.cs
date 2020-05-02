@@ -50,7 +50,7 @@ namespace StudentInfoSystem.ViewModels
 
                 if (student == null)
                 {
-                    MessageBox.Show("User '" + user.username + "' does not have field facultyNumber.");
+                    MessageBox.Show("User '" + user.Username + "' does not have field facultyNumber.");
                     Password = "";
                     OnPropertyChanged("Password");
                     return;

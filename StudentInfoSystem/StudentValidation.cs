@@ -12,7 +12,7 @@ namespace StudentInfoSystem
         public static Student GetStudentDataByUser(User user)
         {
             long facultyNumber;
-            if (!long.TryParse(user.facultyNumber, out facultyNumber))
+            if (!long.TryParse(user.FacultyNumber, out facultyNumber))
             {
                 //error invalid faculty number
                 return null;
@@ -22,7 +22,7 @@ namespace StudentInfoSystem
             foreach (User u in UserData.TestUsers)
             {
                 long tempFacultyNumber = -1;
-                if (long.TryParse(u.facultyNumber, out tempFacultyNumber) && facultyNumber == tempFacultyNumber)
+                if (long.TryParse(u.FacultyNumber, out tempFacultyNumber) && facultyNumber == tempFacultyNumber)
                 {
                     student = StudentData.getStudentByFacutlyNumber(facultyNumber);
                     break;

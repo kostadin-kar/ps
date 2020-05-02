@@ -18,12 +18,23 @@ namespace UserLogin
 
                 if (LoginValidation.ValidateUserInput(ref user))
                 {
+                    if (UserData.TestUsersIfEmpty())
+                    {
+                        UserData.CopyTestUsers();
+                    }
+
                     Console.WriteLine(user.ToString());
                     PrintCurrentUserRole();
 
-                    if (user.role == UserRoles.ADMIN)
+                    if (user.Role == UserRoles.ADMIN)
                     {
                         OpenAdminMenu();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Hello, " + user.Username);
+                        Console.ReadKey();
+                        return;
                     }
                 }
                 else

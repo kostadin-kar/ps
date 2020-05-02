@@ -47,7 +47,7 @@ namespace UserLogin
                 Console.WriteLine(_errorMessage);
                 return false;
             }
-            currentUserRole = user.role;
+            currentUserRole = user.Role;
 
             Logger.LogActivity("Successful login.");
 

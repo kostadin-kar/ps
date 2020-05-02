@@ -8,27 +8,31 @@ namespace UserLogin
 {
     public class User
     {
-        public string username
+        public Int32 UserId
         {
             get; set;
         }
-        public string password
+        public String Username
         {
             get; set;
         }
-        public string facultyNumber
+        public String Password
         {
             get; set;
         }
-        public UserRoles role
+        public String FacultyNumber
         {
             get; set;
         }
-        public DateTime created
+        public UserRoles Role
         {
             get; set;
         }
-        public DateTime isActiveUntil
+        public DateTime Created
+        {
+            get; set;
+        }
+        public DateTime? IsActiveUntil
         {
             get; set;
         }
@@ -39,18 +43,18 @@ namespace UserLogin
 
         public User(string username, string password, string facultyNumber, UserRoles role, DateTime created, DateTime isActiveUntil)
         {
-            this.username = username;
-            this.password = password;
-            this.facultyNumber = facultyNumber;
-            this.role = role;
-            this.created = created;
-            this.isActiveUntil = isActiveUntil;
+            this.Username = username;
+            this.Password = password;
+            this.FacultyNumber = facultyNumber;
+            this.Role = role;
+            this.Created = created;
+            this.IsActiveUntil = isActiveUntil;
         }
 
         override public String ToString()
         {
             return String.Format("Username: {0}\nPassword: {1}\nFaculty number: {2}\nRole: {3}\nCreated: {4}\nActive until: {5}\n",
-                this.username, this.password, this.facultyNumber, this.role, this.created, this.isActiveUntil);
+                this.Username, this.Password, this.FacultyNumber, this.Role, this.Created, this.IsActiveUntil);
         }
     }
 }

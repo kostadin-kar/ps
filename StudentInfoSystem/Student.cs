@@ -8,72 +8,57 @@ namespace StudentInfoSystem
 {
     public class Student
     {
-        private string name;
-        private string middlename;
-        private string sirname;
-        private string faculty;
-        private string speciality;
-        private string degree;
-        private string status;
-        private long facultyNumber;
-        private short course;
-        private string flow;
-        private string group;
-
+        public int StudentId
+        {
+            get; set;
+        }
         public string Name
         {
-            get => name;
-            set => name = value;
+            get; set;
         }
         public string Middlename
         {
-            get => middlename;
-            set => middlename = value;
+            get; set;
         }
         public string Sirname
         {
-            get => sirname;
-            set => sirname = value;
+            get; set;
         }
         public string Faculty
         {
-            get => faculty;
-            set => faculty = value;
+            get; set;
         }
         public string Speciality
         {
-            get => speciality;
-            set => speciality = value;
+            get; set;
         }
         public string Degree
         {
-            get => degree;
-            set => degree = value;
+            get; set;
         }
         public string Status
         {
-            get => status;
-            set => status = value;
+            get; set;
         }
         public long FacultyNumber
         {
-            get => facultyNumber;
-            set => facultyNumber = value;
+            get; set;
         }
         public short Course
         {
-            get => course;
-            set => course = value;
+            get; set;
         }
         public string Flow
         {
-            get => flow;
-            set => flow = value;
+            get; set;
         }
         public string Group
         {
-            get => group;
-            set => group = value;
+            get; set;
+        }
+
+        public Student()
+        {
         }
 
         public Student(string name, 

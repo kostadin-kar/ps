@@ -28,24 +28,31 @@ namespace UserLogin
                     DateTime.Now, LoginValidation.currentUserUsername, LoginValidation.currentUserRole, activity);
             }
 
-            if (File.Exists(LOGGER_FILE))
-            {
-                File.AppendAllText(LOGGER_FILE, activityLine, Encoding.UTF8);
-            }
-            else
-            {
-                Console.WriteLine("Error while working with log file.");
-            }
+            LogContext context = new LogContext();
+            context.Logs.Add(new Log(context.GetNextLogId(), activityLine));
+            context.SaveChanges();
+
+            //if (File.Exists(LOGGER_FILE))
+            //{
+            //    File.AppendAllText(LOGGER_FILE, activityLine, Encoding.UTF8);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Error while working with log file.");
+            //}
 
             currentSessionActivities.Add(activityLine);
         }
 
         public static string ViewLogs()
         {
-            using (StreamReader reader = new StreamReader(LOGGER_FILE))
-            {
-                return reader.ReadToEnd();
-            }
+            LogContext context = new LogContext();
+            return string.Join(Environment.NewLine, context.Logs.ToList());
+
+            //using (StreamReader reader = new StreamReader(LOGGER_FILE))
+            //{
+            //    return reader.ReadToEnd();
+            //}
         }
 
         public static void ViewCurrentSessionActivities()
@@ -58,13 +65,15 @@ namespace UserLogin
             Console.WriteLine(builder.ToString());
         }
 
-        public static int GetLoginAttempts(string username)
+        private static int GetLoginAttempts(string username)
         {
-            IEnumerable<string> logLines = File.ReadAllLines(LOGGER_FILE).Reverse();
-            foreach (string line in logLines)
+            //IEnumerable<string> logLines = File.ReadAllLines(LOGGER_FILE).Reverse();
+            LogContext context = new LogContext();
+            
+            foreach (Log line in context.Logs.ToList())
             {
                 Regex usernameRegex = new Regex("Username: '(.*)', Date: '(.*)', Attempt: '(.*)'");
-                Match match = usernameRegex.Match(line);
+                Match match = usernameRegex.Match(line.ToString());
                 if (match.Success)
                 {
                     string usernameMatch = match.Groups[1].Value;
@@ -78,19 +87,21 @@ namespace UserLogin
             return 0;
         }
 
-        public static string GetLastLoginAttemptLog(string username)
+        private static string GetLastLoginAttemptLog(string username)
         {
-            IEnumerable<string> logLines = File.ReadAllLines(LOGGER_FILE).Reverse();
-            foreach (string line in logLines)
+            //IEnumerable<string> logLines = File.ReadAllLines(LOGGER_FILE).Reverse();
+            LogContext context = new LogContext();
+
+            foreach (Log line in context.Logs.ToList())
             {
                 Regex usernameRegex = new Regex("Username: '(.*)', Date: '(.*)', Attempt: '(.*)'");
-                Match match = usernameRegex.Match(line);
+                Match match = usernameRegex.Match(line.ToString());
                 if (match.Success)
                 {
                     string usernameMatch = match.Groups[1].Value;
                     if (usernameMatch == username)
                     {
-                        return line;
+                        return line.ToString();
                     }
                 }
             }
@@ -106,7 +117,7 @@ namespace UserLogin
             Console.WriteLine(msg);
         }
 
-        public static bool AssertTimeHasPassedSinceSeveralAttempts(string username,string dateMatch)
+        private static bool AssertTimeHasPassedSinceSeveralAttempts(string username,string dateMatch)
         {
             DateTime lastTime = DateTime.ParseExact(dateMatch, DATETIME_FORMAT, null);
             DateTime currentTime = DateTime.Now;
@@ -152,20 +163,22 @@ namespace UserLogin
 
         public static bool ShouldUserLog(string username)
         {
-            //StringBuilder builder = new StringBuilder();
+            ////StringBuilder builder = new StringBuilder();
 
-            //using (StreamReader reader = new StreamReader(LOGGER_FILE))
-            //{
-            //    "Error login attempt; Username: '{0}', Date: '{1}', Attempt: '{2}'"
-            //}
+            ////using (StreamReader reader = new StreamReader(LOGGER_FILE))
+            ////{
+            ////    "Error login attempt; Username: '{0}', Date: '{1}', Attempt: '{2}'"
+            ////}
 
-            IEnumerable<string> logLines = File.ReadAllLines(LOGGER_FILE).Reverse();
-            foreach (string line in logLines)
+            //IEnumerable<string> logLines = File.ReadAllLines(LOGGER_FILE).Reverse();
+            LogContext context = new LogContext();
+
+            foreach (Log line in context.Logs.ToList())
             {
-                if (line.StartsWith("Error login attempt"))
+                if (line.ToString().StartsWith("Error login attempt"))
                 {
                     Regex usernameRegex = new Regex("Username: '(.*)', Date: '(.*)', Attempt: '(.*)'");
-                    Match match = usernameRegex.Match(line);
+                    Match match = usernameRegex.Match(line.ToString());
                     if (match.Success)
                     {
                         string usernameMatch = match.Groups[1].Value;

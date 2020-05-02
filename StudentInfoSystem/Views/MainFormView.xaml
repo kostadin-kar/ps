@@ -54,7 +54,7 @@
                 <TextBox Text="{Binding Student.Degree, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtOKS" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2"/>
 
                 <Label x:Name="lblStatus" Content="Статус:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,2,0,0" Grid.Row="3"/>
-                <TextBox Text="{Binding Student.Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtStatus" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3"/>
+                <ListBox ItemsSource="{Binding StudStatusChoices}" x:Name="txtStatus" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3"/>
 
                 <Label x:Name="lblFacNumber" Content="Фак. номер:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,0,0,0" Grid.Row="4"/>
                 <TextBox Text="{Binding Student.FacultyNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtFacNumber" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4"/>
@@ -69,6 +69,7 @@
                 <TextBox Text="{Binding Student.Group, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="txtGroup" HorizontalAlignment="Left" Height="23" Margin="0,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Grid.Column="3" Grid.Row="2"/>
             </Grid>
         </GroupBox>
+        <Button Content="Test if studetns are empty" HorizontalAlignment="Left" Margin="29,411,0,0" VerticalAlignment="Top" Width="149" Click="Button_Click"/>
 
     </Grid>
 </UserControl>
