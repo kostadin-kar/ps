@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UserLogin
+namespace LoggerCW
 {
-    class Log
+    public class Log
     {
         public Int32 LogId
         {

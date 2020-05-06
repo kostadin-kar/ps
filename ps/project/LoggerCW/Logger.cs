@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace UserLogin
+namespace LoggerCW
 {
     public class Logger
     {
@@ -20,11 +19,6 @@ namespace UserLogin
             if (activity.StartsWith("Error login attempt"))
             {
                 activityLine += Environment.NewLine;
-            }
-            else
-            {
-                activityLine = string.Format("Date: {0}; User: {1}; Role: {2}; Action: {3}",
-                    DateTime.Now, LoginValidation.currentUserUsername, LoginValidation.currentUserRole, activity);
             }
 
             LogContext context = new LogContext();
@@ -95,7 +89,7 @@ namespace UserLogin
         {
             int attempts = GetLoginAttempts(username);
             string msg = string.Format("Error login attempt; Username: '{0}', Date: '{1}', Attempt: '{2}'",
-                LoginValidation.currentUserUsername, DateTime.Now.ToString(DATETIME_FORMAT), ++attempts);
+                username, DateTime.Now.ToString(DATETIME_FORMAT), ++attempts);
             LogActivity(msg);
             Console.WriteLine(msg);
         }
@@ -110,7 +104,7 @@ namespace UserLogin
             if (minutesDiff > 3)
             {
                 string msgTombstone = string.Format("Error TOMBSTONE login attempt; Username: '{0}', Date: '{1}', Attempt: '0'",
-                    LoginValidation.currentUserUsername, DateTime.Now.ToString(DATETIME_FORMAT));
+                    username, DateTime.Now.ToString(DATETIME_FORMAT));
                 LogActivity(msgTombstone);
                 Console.WriteLine(msgTombstone);
                 return true;
@@ -170,7 +164,7 @@ namespace UserLogin
                                 if (minutesDiff > 3)
                                 {
                                     LogActivity(string.Format("Error login attempt; Username: '{0}', Date: '{1}', Attempt: '0'",
-                                        LoginValidation.currentUserUsername, DateTime.Now.ToString(DATETIME_FORMAT), ++attemptMatch));
+                                        username, DateTime.Now.ToString(DATETIME_FORMAT), ++attemptMatch));
                                     return true;
                                     // return true, tumbstone log message
                                 }
@@ -185,7 +179,7 @@ namespace UserLogin
                             else
                             {
                                 string msg = string.Format("Error login attempt; Username: '{0}', Date: '{1}', Attempt: '{2}'",
-                                    LoginValidation.currentUserUsername, DateTime.Now.ToString(DATETIME_FORMAT), ++attemptMatch);
+                                    username, DateTime.Now.ToString(DATETIME_FORMAT), ++attemptMatch);
                                 Console.WriteLine(msg);
                                 LogActivity(msg);
                                 //add log to increment attempt counter, return true
