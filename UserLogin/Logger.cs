@@ -16,10 +16,10 @@ namespace UserLogin
 
         public static void LogActivity(string activity)
         {
-            string activityLine;
+            string activityLine = activity;
             if (activity.StartsWith("Error login attempt"))
             {
-                activityLine = activity + Environment.NewLine;
+                activityLine += Environment.NewLine;
             }
             else
             {

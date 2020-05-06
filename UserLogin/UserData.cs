@@ -60,7 +60,11 @@ namespace UserLogin
                 user.IsActiveUntil = activeTo;
                 Console.WriteLine(string.Format("User '{0}'s' active period changed to '{1}' successfully.",
                     username, activeTo.ToString(Logger.DATETIME_FORMAT)));
-                Logger.LogActivity(string.Format("Active time changed successfully for user '{0}'.", username));
+
+                Logger.LogActivity(
+                    string.Format("Date: {0}; User: {1}; Role: {2}; Action: {3}",
+                        DateTime.Now, user.Username, user.Role, string.Format("Active time changed successfully for user '{0}'.", username))
+                );
 
                 return;
             }
@@ -79,7 +83,10 @@ namespace UserLogin
                 context.SaveChanges();
 
                 Console.WriteLine(string.Format("User '{0}'s' role changed to '{1}' successfully.", username, role.ToString()));
-                Logger.LogActivity(string.Format("Role changed successfully for user '{0}'.", username));
+                Logger.LogActivity(
+                    string.Format("Date: {0}; User: {1}; Role: {2}; Action: {3}",
+                        DateTime.Now, user.Username, user.Role, string.Format("Role changed successfully for user '{0}'.", username))
+                );
 
                 return;
             }

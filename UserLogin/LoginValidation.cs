@@ -11,6 +11,15 @@ namespace UserLogin
         public static string currentUserUsername;
         private static string currentUserPassword;
         private static string _errorMessage;
+        public static string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = string.Format("Date: {0}; User: {1}; Role: {2}; Action: {3}",
+                    DateTime.Now, currentUserUsername, currentUserRole, value);
+            }
+        }
         public static UserRoles currentUserRole;
 
         public static UserRoles CurrentUserRole
@@ -33,8 +42,8 @@ namespace UserLogin
         {
             if (!IsInputValid())
             {
-                Console.WriteLine(_errorMessage);
-                Logger.LogActivity(_errorMessage);
+                Console.WriteLine(ErrorMessage);
+                Logger.LogActivity(ErrorMessage);
                 return false;
             }
 
@@ -43,10 +52,10 @@ namespace UserLogin
             {
                 _actionOnErrorFuction(string.Format("User with username '{0}' and password '{1}' does not exist",
                     currentUserUsername, currentUserPassword));
-                _errorMessage = string.Format("User with username '{0}' and password '{1}' does not exist",
+                ErrorMessage = string.Format("User with username '{0}' and password '{1}' does not exist",
                     currentUserUsername, currentUserPassword);
-                Console.WriteLine(_errorMessage);
-                Logger.LogActivity(_errorMessage);
+                Console.WriteLine(ErrorMessage);
+                Logger.LogActivity(ErrorMessage);
                 return false;
             }
             currentUserRole = user.Role;
@@ -67,13 +76,13 @@ namespace UserLogin
             if (String.IsNullOrEmpty(field))
             {
                 _actionOnErrorFuction(string.Format("{0} '{1}' is malformed or missing", errorFieldPlaceholder, field));
-                _errorMessage = string.Format("{0} is malformed or missing", errorFieldPlaceholder);
+                ErrorMessage = string.Format("{0} is malformed or missing", errorFieldPlaceholder);
                 return false;
             }
             if (field.Length < 5)
             {
                 _actionOnErrorFuction(string.Format("{0} '{1}' length less than 5 symbols", errorFieldPlaceholder, field));
-                _errorMessage = string.Format("{0} length less than 5 symbols", errorFieldPlaceholder);
+                ErrorMessage = string.Format("{0} length less than 5 symbols", errorFieldPlaceholder);
                 return false;
             }
             return true;
