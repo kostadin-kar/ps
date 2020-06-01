@@ -51,17 +51,19 @@ namespace UserLogin
             user = UserData.IsUserPassCorrect(currentUserUsername, currentUserPassword);
             if (user == null)
             {
-                _actionOnErrorFuction(string.Format("User with username '{0}' and password '{1}' does not exist",
-                    currentUserUsername, currentUserPassword));
-                ErrorMessage = string.Format("User with username '{0}' and password '{1}' does not exist",
+                string error = string.Format("User with username '{0}' and password '{1}' does not exist",
                     currentUserUsername, currentUserPassword);
+                _actionOnErrorFuction(error);
+                ErrorMessage = error;
                 Console.WriteLine(ErrorMessage);
                 Logger.LogActivity(ErrorMessage);
                 return false;
             }
             currentUserRole = user.Role;
 
-            Logger.LogActivity("Successful login.");
+            string message = string.Format("User '{0}' successfully logged in.", user.Username);
+            Console.WriteLine(message);
+            Logger.LogActivity(message);
 
             return true;
         }
@@ -76,14 +78,16 @@ namespace UserLogin
         {
             if (String.IsNullOrEmpty(field))
             {
-                _actionOnErrorFuction(string.Format("{0} '{1}' is malformed or missing", errorFieldPlaceholder, field));
-                ErrorMessage = string.Format("{0} is malformed or missing", errorFieldPlaceholder);
+                string error = string.Format("{0} '{1}' is malformed or missing", errorFieldPlaceholder, field);
+                _actionOnErrorFuction(error);
+                ErrorMessage = error;
                 return false;
             }
             if (field.Length < 5)
             {
-                _actionOnErrorFuction(string.Format("{0} '{1}' length less than 5 symbols", errorFieldPlaceholder, field));
-                ErrorMessage = string.Format("{0} length less than 5 symbols", errorFieldPlaceholder);
+                string error = string.Format("{0} '{1}' length less than 5 symbols", errorFieldPlaceholder, field);
+                _actionOnErrorFuction(error);
+                ErrorMessage = error;
                 return false;
             }
             return true;

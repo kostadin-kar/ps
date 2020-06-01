@@ -62,14 +62,17 @@ namespace UserLogin
             if (user != null)
             {
                 user.IsActiveUntil = activeTo;
-                Console.WriteLine(string.Format("User '{0}'s' active period changed to '{1}' successfully.",
-                    username, activeTo.ToString(Logger.DATETIME_FORMAT)));
-                Logger.LogActivity(string.Format("Active time changed successfully for user '{0}'.", username));
+                string message = string.Format("User '{0}'s' active period changed to '{1}' successfully.",
+                    username, activeTo.ToString(Logger.DATETIME_FORMAT));
+                Console.WriteLine(message);
+                Logger.LogActivity(message);
 
                 return;
             }
 
-            Console.WriteLine(string.Format("User '{0}' does not exist. No changes were made", username));
+            string error = string.Format("User '{0}' does not exist. No changes were made", username);
+            Console.WriteLine(error);
+            Logger.LogActivity(error);
         }
 
         public static void AssignUserRole(string username, UserRoles role)
@@ -82,13 +85,16 @@ namespace UserLogin
                 user.Role = role;
                 context.SaveChanges();
 
-                Console.WriteLine(string.Format("User '{0}'s' role changed to '{1}' successfully.", username, role.ToString()));
-                Logger.LogActivity(string.Format("Role changed successfully for user '{0}'.", username));
+                string message = string.Format("User '{0}'s' role changed to '{1}' successfully.", username, role.ToString());
+                Console.WriteLine(message);
+                Logger.LogActivity(message);
 
                 return;
             }
 
-            Console.WriteLine(string.Format("User '{0}' does not exist. No changes were made", username));
+            string error = string.Format("User '{0}' does not exist. No changes were made", username);
+            Console.WriteLine(error);
+            Logger.LogActivity(error);
         }
 
         public static void ListAllUsers()

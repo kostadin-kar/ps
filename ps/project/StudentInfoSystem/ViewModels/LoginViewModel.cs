@@ -46,11 +46,12 @@ namespace StudentInfoSystem.ViewModels
             User user = null;
             if (LoginValidation.ValidateUserInput(ref user))
             {
-                Student student = StudentValidation.GetStudentDataByUser(user);
+                string error = "";
+                Student student = StudentValidation.GetStudentDataByUser(user, ref error);
 
                 if (student == null)
                 {
-                    MessageBox.Show("User '" + user.Username + "' does not have field facultyNumber.");
+                    MessageBox.Show(error);
                     Password = "";
                     OnPropertyChanged("Password");
                     return;

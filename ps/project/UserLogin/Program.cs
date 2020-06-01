@@ -33,7 +33,9 @@ namespace UserLogin
                     }
                     else
                     {
-                        Console.WriteLine("Hello, " + user.Username);
+                        string message = string.Format("Hello, {0}, login successful", user.Username);
+                        Console.WriteLine(message);
+                        Logger.LogActivity(message);
                         Console.ReadKey();
                         return;
                     }
@@ -45,7 +47,9 @@ namespace UserLogin
                 }
             }
 
-            Console.WriteLine("Exiting... Press anykey to continue");
+            string exitMsg = "Exiting... Press anykey to continue";
+            Logger.LogActivity(exitMsg);
+            Console.WriteLine(exitMsg);
             Console.ReadKey();
         }
 
@@ -85,6 +89,7 @@ namespace UserLogin
         private static void PrintErrorMessage(string msg)
         {
             Console.WriteLine("ERROR: " + msg);
+            Logger.LogActivity("ERROR: " + msg);
         }
 
         private static void OpenAdminMenu()
@@ -124,10 +129,12 @@ namespace UserLogin
                 catch (ArgumentNullException e)
                 {
                     Console.WriteLine("Please, enter valid option.");
+                    Logger.LogActivity("Please, enter valid option.");
                 }
                 catch (FormatException e)
                 {
                     Console.WriteLine("Please, enter valid option.");
+                    Logger.LogActivity("Please, enter valid option.");
                 }
             }
         }
@@ -147,7 +154,9 @@ namespace UserLogin
             UserRoles role;
             if (!Enum.TryParse(input, out role))
             {
-                Console.WriteLine(string.Format("Role '{0}' does not exist. No changes were made.", input));
+                string error = string.Format("Role '{0}' does not exist. No changes were made.", input);
+                Console.WriteLine(error);
+                Logger.LogActivity(error);
                 return;
             }
 
@@ -166,6 +175,7 @@ namespace UserLogin
             if (!DateTime.TryParseExact(activePeriodInput, formats, null, System.Globalization.DateTimeStyles.AdjustToUniversal, out activePeriod))
             {
                 Console.WriteLine("Wrong time format.");
+                Logger.LogActivity("Wrong time format.");
                 return;
             }
 
